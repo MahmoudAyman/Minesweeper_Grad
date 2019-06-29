@@ -242,7 +242,8 @@ void loop()
         Serial.write(dataPacket, 12);
       }
       delay(50);
-      moveRobot('b', 200);
+
+      recieveOrder();
     }
 }
 
@@ -290,6 +291,12 @@ void readValues(){
 }
 
 
+//get order from the main program
+void recieveOrder(){
+char order = serial.read();
+moveRobot(order,200);
+
+}
 boolean processData(){
   Serial.println("dd");
     boolean flag = false;
